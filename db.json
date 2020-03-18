@@ -79,11 +79,6 @@
       "name": "Quesadillas",
       "price": 3000,
       "id": 20
-    },
-    {
-      "name": "Deploy listo",
-      "price": 2000,
-      "id": 21
     }
   ]
 }

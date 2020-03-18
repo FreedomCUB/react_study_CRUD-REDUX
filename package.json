@@ -2,7 +2,6 @@
   "name": "crudredux",
   "version": "0.1.0",
   "private": true,
-  "main": "server.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -15,18 +14,14 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sweetalert2": "^9.10.2",
-    "json-server": "^0.12.1"
+    "sweetalert2": "^9.10.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "keywords": [
-    "json-server,heroku, node, REST API"
-  ],  
   "eslintConfig": {
     "extends": "react-app"
   },
