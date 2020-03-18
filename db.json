@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Jugo de Zanahoria",
+      "price": "31111"
+    },
+    {
+      "id": 2,
+      "name": "Jugo de Naranja",
+      "price": "1"
+    },
+    {
+      "name": "Jugo de Naranja",
+      "price": "300",
+      "id": 3
+    },
+    {
+      "name": "Rib Eye 800g",
+      "price": "200",
+      "id": 4
+    },
+    {
+      "name": "Jugo de Fresa",
+      "price": "200",
+      "id": 5
+    },
+    {
+      "name": "CocaCola",
+      "price": 1500,
+      "id": 10
+    },
+    {
+      "name": "Jugo de Piña",
+      "price": 2500,
+      "id": 11
+    },
+    {
+      "name": "Jugo de Mango",
+      "price": 2500,
+      "id": 12
+    },
+    {
+      "name": "Jugo de Maracuya",
+      "price": 2500,
+      "id": 13
+    },
+    {
+      "name": "Limonada",
+      "price": 3000,
+      "id": 14
+    },
+    {
+      "name": "Red bull",
+      "price": 2500,
+      "id": 15
+    },
+    {
+      "name": "Cerveza Corona",
+      "price": 2500,
+      "id": 16
+    },
+    {
+      "name": "IceBeam",
+      "price": 2900,
+      "id": 17
+    },
+    {
+      "name": "Jugo de Frutos Rojos",
+      "price": 2500,
+      "id": 18
+    },
+    {
+      "name": "Jugo de Frutos Rojos",
+      "price": 2500,
+      "id": 19
+    },
+    {
+      "name": "Quesadillas",
+      "price": 3000,
+      "id": 20
+    }
+  ]
+}
