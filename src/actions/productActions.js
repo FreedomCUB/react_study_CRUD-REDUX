@@ -7,13 +7,17 @@ import {
   DOWNLOAD_PRODUCT_ERROR,
   DELETE_PRODUCT_ID,
   DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT_ERROR
+  DELETE_PRODUCT_ERROR,
+  EDIT_PRODUCT_ID,
+  START_EDIT_PRODUCT,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_ERROR
 } from "../types";
 
 import clientAxios from "../config/axios";
 import Swal from "sweetalert2";
-import Products from "../components/Products";
 
+// Create new product
 export function addNewProductAction(product, path) {
   return async dispatch => {
     dispatch(addProduct());
@@ -27,7 +31,7 @@ export function addNewProductAction(product, path) {
 
       // Alert Success
       Swal.fire({
-        tittle: "Correto",
+        title: "Correto",
         text: "El producto se agrego correctamente",
         icon: "success",
         confirmButtonColor: "#78C2AD"
@@ -39,7 +43,7 @@ export function addNewProductAction(product, path) {
 
       // Alert Error
       Swal.fire({
-        tittle: "Error",
+        title: "Error",
         text: "Hubo un error en la operación",
         icon: "error",
         confirmButtonColor: "#FF7851"
@@ -126,5 +130,64 @@ const deleteProductSuccess = () => ({
 
 const deleteProductError = () => ({
   type: DELETE_PRODUCT_ERROR,
+  payload: true
+});
+
+export function editProducIdtAction(product) {
+  return dispatch => {
+    dispatch(editProductId(product));
+  
+  };
+}
+const editProductId = product => ({
+  type: EDIT_PRODUCT_ID,
+  payload: product
+});
+
+export function editProductAction(product) {
+  return async dispatch => {
+    dispatch(startEditProduct(product))
+
+
+    try {
+      await clientAxios.put(`/products/${product.id}`, product) 
+      
+      dispatch(editProductSuccess(product));
+
+      // Alert Success
+      Swal.fire({
+        title: "Correto",
+        text: "El producto se editó correctamente",
+        icon: "success",
+        confirmButtonColor: "#78C2AD"
+      });
+      
+    } catch (error) {
+      console.log(error)
+      dispatch( editProductError() ) 
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un error en la operación",
+        icon: "error",
+        confirmButtonColor: "#FF7851"
+      });     
+    }
+
+  }
+}
+
+
+const startEditProduct = () => ({
+  type: START_EDIT_PRODUCT,
+  
+});
+
+const editProductSuccess = product => ({
+  type: EDIT_PRODUCT_SUCCESS,
+  payload : product
+})
+
+const editProductError = () => ({
+  type: EDIT_PRODUCT_ERROR,
   payload: true
 });

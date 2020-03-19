@@ -7,19 +7,25 @@ import {
   DOWNLOAD_PRODUCT_ERROR,
   DELETE_PRODUCT_ID,
   DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT_ERROR
+  DELETE_PRODUCT_ERROR,
+  EDIT_PRODUCT_ID,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_ERROR,
+  START_EDIT_PRODUCT
 } from "../types";
 
 const initialState = {
   products: [],
   error: null,
   loading: false,
-  productDelete: null
+  productDelete: null,
+  productEdit: null
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case START_DOWNLOAD_PRODUCT:
+    case START_EDIT_PRODUCT:
     case ADD_PRODUCT:
       return {
         ...state,
@@ -31,7 +37,8 @@ export default function(state = initialState, action) {
         loading: false,
         products: [...state.products, action.payload]
       };
-    case DELETE_PRODUCT_ERROR:  
+    case DELETE_PRODUCT_ERROR:
+    case EDIT_PRODUCT_ERROR:
     case DOWNLOAD_PRODUCT_ERROR:
     case ADD_PRODUCT_ERROR:
       return {
@@ -44,6 +51,7 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         error: null,
+        productEdit: null,
         products: action.payload
       };
     case DELETE_PRODUCT_ID:
@@ -58,6 +66,23 @@ export default function(state = initialState, action) {
           product => product.id !== state.productDelete
         ),
         productDelete: null
+      };
+    case EDIT_PRODUCT_ID:
+      return {
+        ...state,
+        productEdit: action.payload
+      };
+    case EDIT_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        productEdit: null,
+        products: state.products.map(product =>
+          product.id === action.payload.id
+            ? (product = action.payload)
+            : product
+        ),
+        loading: false,
+        error: null
       };
 
     default:

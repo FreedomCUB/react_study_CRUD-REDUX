@@ -9,12 +9,13 @@ const Products = () => {
     // State
     const products = useSelector(state => state.products.products);
     const error = useSelector(state => state.products.error);
-    const loading = useSelector(state => state.products.loading)
+    const loading = useSelector(state => state.products.loading);
 
     useEffect(() => {
-        // load productos
+        // load products
         const loadProducts = () => dispatch(downloadProductsAction());
         loadProducts();
+        // eslint-disable-next-line
     }, []);
 
     return (
@@ -38,7 +39,11 @@ const Products = () => {
                 </thead>
                 <tbody>
                     {products.length === 0
-                        ? "no hay productos"
+                        ? <tr>
+                            <td>No hay productos</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         : products.map(product => (
                             <Product key={product.id} product={product} />
                         ))}
